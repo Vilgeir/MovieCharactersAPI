@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\VHelge\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\VHelge\\.nuget\\packages"
+    ]
+  }
+}
