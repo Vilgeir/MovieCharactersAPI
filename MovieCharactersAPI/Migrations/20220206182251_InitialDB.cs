@@ -12,7 +12,7 @@ namespace MovieCharactersAPI.Migrations
                 {
                     CharacterId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     Alias = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Gender = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Picture = table.Column<string>(type: "nvarchar(max)", nullable: true)
@@ -28,8 +28,8 @@ namespace MovieCharactersAPI.Migrations
                 {
                     FranchiseId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -42,7 +42,7 @@ namespace MovieCharactersAPI.Migrations
                 {
                     MovieId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Title = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     Genre = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ReleaseYear = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Director = table.Column<string>(type: "nvarchar(max)", nullable: true),

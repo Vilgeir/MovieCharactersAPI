@@ -5,10 +5,19 @@ namespace MovieCharactersAPI.Models
 {
     public class MediaDbContext : DbContext
     {
+        public MediaDbContext(DbContextOptions options) : base(options)
+        {
+        }
+
+        //Tables
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Character> Characters { get; set; }
         public DbSet<Franchise> Franchises { get; set; }
 
+        /// <summary>
+        /// Adds seeded data when creating the database
+        /// </summary>
+        /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             ///CHARACTERS
@@ -104,6 +113,7 @@ namespace MovieCharactersAPI.Models
                 Description = ""
             });
 
+            //Connects many to many relations between Movie and Characters
             modelBuilder.Entity<Movie>()
                 .HasMany(p => p.Characters)
                 .WithMany(m => m.Movies)
@@ -124,13 +134,6 @@ namespace MovieCharactersAPI.Models
                         );
                     });
 
-        }
-
-
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer("Data Source=DESKTOP-MJQMMB2\\SQLEXPRESS; Initial Catalog=MediaCodeFirstDB; Integrated Security=True");
         }
     }
 }

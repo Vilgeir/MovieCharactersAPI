@@ -139,3 +139,5 @@ C:\Users\VHelge\source\repos\MovieCharactersAPI\MovieCharactersAPI\bin\Debug\net
 C:\Users\VHelge\source\repos\MovieCharactersAPI\MovieCharactersAPI\bin\Debug\net5.0\Microsoft.Extensions.Options.dll
 C:\Users\VHelge\source\repos\MovieCharactersAPI\MovieCharactersAPI\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
 C:\Users\VHelge\source\repos\MovieCharactersAPI\MovieCharactersAPI\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\VHelge\source\repos\MovieCharactersAPI\MovieCharactersAPI\bin\Debug\net5.0\MovieCharactersAPI.xml
+C:\Users\VHelge\source\repos\MovieCharactersAPI\MovieCharactersAPI\obj\Debug\net5.0\MovieCharactersAPI.xml
