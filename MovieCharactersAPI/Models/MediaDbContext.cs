@@ -14,29 +14,28 @@ namespace MovieCharactersAPI.Models
             ///CHARACTERS
             modelBuilder.Entity<Character>().HasData(new Character
             {
-                Id = 1,
+                CharacterId = 1,
                 Name = "James Bond",
                 Alias = "007",
-                Gender = "Male",
-                
+                Gender = "Male",           
             });
             modelBuilder.Entity<Character>().HasData(new Character
             {
-                Id = 2,
+                CharacterId = 2,
                 Name = "Tony Stark",
                 Alias = "Iron Man",
                 Gender = "Male",
             });
             modelBuilder.Entity<Character>().HasData(new Character
             {
-                Id = 3,
+                CharacterId = 3,
                 Name = "Carol Danvers",
                 Alias = "Captain Marvel",
                 Gender = "Female",
             });
             modelBuilder.Entity<Character>().HasData(new Character
             {
-                Id = 4,
+                CharacterId = 4,
                 Name = "Anakin Skywalker",
                 Alias = "Darth Vader",
                 Gender = "Male",
@@ -45,7 +44,7 @@ namespace MovieCharactersAPI.Models
             ///MOVIES
             modelBuilder.Entity<Movie>().HasData(new Movie
             {
-                Id = 1,
+                MovieId = 1,
                 Title = "No Time To Die",
                 Genre = "Action",
                 ReleaseYear = "2021",
@@ -56,7 +55,7 @@ namespace MovieCharactersAPI.Models
             });
             modelBuilder.Entity<Movie>().HasData(new Movie
             {
-                Id = 2,
+                MovieId = 2,
                 Title = "Infinity War",
                 Genre = "Action",
                 ReleaseYear = "2018",
@@ -66,7 +65,7 @@ namespace MovieCharactersAPI.Models
             });
             modelBuilder.Entity<Movie>().HasData(new Movie
             {
-                Id = 3,
+                MovieId = 3,
                 Title = "Endgame",
                 Genre = "Action",
                 ReleaseYear = "2019",
@@ -76,7 +75,7 @@ namespace MovieCharactersAPI.Models
             });
             modelBuilder.Entity<Movie>().HasData(new Movie
             {
-                Id = 4 ,
+                MovieId = 4 ,
                 Title = "The Empire Strikes Back",
                 Genre = "Action",
                 ReleaseYear = "1980",
@@ -88,19 +87,19 @@ namespace MovieCharactersAPI.Models
             ///FRANCHISES
             modelBuilder.Entity<Franchise>().HasData(new Franchise
             {
-                Id = 1,
+                FranchiseId = 1,
                 Name =  "James Bond",
                 Description = ""
             });
             modelBuilder.Entity<Franchise>().HasData(new Franchise
             {
-                Id = 2,
+                FranchiseId = 2,
                 Name = "Marvel Cinematic Universe",
                 Description = ""
             });
             modelBuilder.Entity<Franchise>().HasData(new Franchise
             {
-                Id = 3,
+                FranchiseId = 3,
                 Name = "Star Wars",
                 Description = ""
             });

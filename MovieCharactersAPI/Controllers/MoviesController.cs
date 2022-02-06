@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MovieCharactersAPI.Models;
+using MovieCharactersAPI.Models.DTOs.Movie;
 
 namespace MovieCharactersAPI.Controllers
 {
@@ -14,44 +16,47 @@ namespace MovieCharactersAPI.Controllers
     public class MoviesController : ControllerBase
     {
         private readonly MediaDbContext _context;
+        private readonly IMapper _mapper;
 
-        public MoviesController(MediaDbContext context)
+        public MoviesController(MediaDbContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         // GET: api/Movies
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Movie>>> GetMovies()
+        public async Task<ActionResult<IEnumerable<MovieDTO>>> GetMovies()
         {
-            return await _context.Movies.ToListAsync();
+            return _mapper.Map<List<MovieDTO>>(await _context.Movies.Include(x => x.Characters).ToListAsync());
         }
 
         // GET: api/Movies/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Movie>> GetMovie(int id)
+        public async Task<ActionResult<MovieDTO>> GetMovie(int id)
         {
-            var movie = await _context.Movies.FindAsync(id);
+            Movie movie = await _context.Movies.FindAsync(id);
 
             if (movie == null)
             {
                 return NotFound();
             }
 
-            return movie;
+            return _mapper.Map<MovieDTO>(movie);
         }
 
         // PUT: api/Movies/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutMovie(int id, Movie movie)
+        public async Task<IActionResult> PutMovie(int id, MovieUpdateDTO movie)
         {
-            if (id != movie.Id)
+            if (id != movie.MovieId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(movie).State = EntityState.Modified;
+            Movie domainMovie = _mapper.Map<Movie>(movie);
+            _context.Entry(domainMovie).State = EntityState.Modified;
 
             try
             {
@@ -75,12 +80,13 @@ namespace MovieCharactersAPI.Controllers
         // POST: api/Movies
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Movie>> PostMovie(Movie movie)
+        public async Task<ActionResult<MovieCreateDTO>> PostMovie(MovieCreateDTO movie)
         {
-            _context.Movies.Add(movie);
+            Movie domainMovie = _mapper.Map<Movie>(movie);
+            _context.Movies.Add(domainMovie);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetMovie", new { id = movie.Id }, movie);
+            return CreatedAtAction("GetMovie", new { id = domainMovie.MovieId }, movie);
         }
 
         // DELETE: api/Movies/5
@@ -101,7 +107,7 @@ namespace MovieCharactersAPI.Controllers
 
         private bool MovieExists(int id)
         {
-            return _context.Movies.Any(e => e.Id == id);
+            return _context.Movies.Any(e => e.MovieId == id);
         }
     }
 }

@@ -10,7 +10,7 @@ namespace MovieCharactersAPI.Migrations
                 name: "Characters",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    CharacterId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Alias = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -19,28 +19,28 @@ namespace MovieCharactersAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Characters", x => x.Id);
+                    table.PrimaryKey("PK_Characters", x => x.CharacterId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Franchises",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    FranchiseId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Franchises", x => x.Id);
+                    table.PrimaryKey("PK_Franchises", x => x.FranchiseId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Movies",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    MovieId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Genre = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -52,12 +52,12 @@ namespace MovieCharactersAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Movies", x => x.Id);
+                    table.PrimaryKey("PK_Movies", x => x.MovieId);
                     table.ForeignKey(
                         name: "FK_Movies_Franchises_FranchiseId",
                         column: x => x.FranchiseId,
                         principalTable: "Franchises",
-                        principalColumn: "Id",
+                        principalColumn: "FranchiseId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -75,19 +75,19 @@ namespace MovieCharactersAPI.Migrations
                         name: "FK_CharacterMovie_Characters_CharacterId",
                         column: x => x.CharacterId,
                         principalTable: "Characters",
-                        principalColumn: "Id",
+                        principalColumn: "CharacterId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_CharacterMovie_Movies_MovieId",
                         column: x => x.MovieId,
                         principalTable: "Movies",
-                        principalColumn: "Id",
+                        principalColumn: "MovieId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
                 table: "Characters",
-                columns: new[] { "Id", "Alias", "Gender", "Name", "Picture" },
+                columns: new[] { "CharacterId", "Alias", "Gender", "Name", "Picture" },
                 values: new object[,]
                 {
                     { 1, "007", "Male", "James Bond", null },
@@ -98,7 +98,7 @@ namespace MovieCharactersAPI.Migrations
 
             migrationBuilder.InsertData(
                 table: "Franchises",
-                columns: new[] { "Id", "Description", "Name" },
+                columns: new[] { "FranchiseId", "Description", "Name" },
                 values: new object[,]
                 {
                     { 1, "", "James Bond" },
@@ -108,7 +108,7 @@ namespace MovieCharactersAPI.Migrations
 
             migrationBuilder.InsertData(
                 table: "Movies",
-                columns: new[] { "Id", "Director", "FranchiseId", "Genre", "Picture", "ReleaseYear", "Title", "Trailer" },
+                columns: new[] { "MovieId", "Director", "FranchiseId", "Genre", "Picture", "ReleaseYear", "Title", "Trailer" },
                 values: new object[,]
                 {
                     { 1, "Cary Joji Fukunaga", 1, "Action", null, "2021", "No Time To Die", "https://www.youtube.com/watch?v=N_gD9-Oa0fg" },

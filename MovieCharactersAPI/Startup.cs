@@ -29,6 +29,7 @@ namespace MovieCharactersAPI
         {
 
             services.AddControllers();
+            services.AddAutoMapper(typeof(Startup));
             services.AddDbContext<MediaDbContext>();
             services.AddSwaggerGen(c =>
             {
