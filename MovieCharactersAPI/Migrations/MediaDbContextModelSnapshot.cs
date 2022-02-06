@@ -67,7 +67,7 @@ namespace MovieCharactersAPI.Migrations
 
             modelBuilder.Entity("MovieCharactersAPI.Models.Character", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("CharacterId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -84,35 +84,35 @@ namespace MovieCharactersAPI.Migrations
                     b.Property<string>("Picture")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("CharacterId");
 
                     b.ToTable("Characters");
 
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            CharacterId = 1,
                             Alias = "007",
                             Gender = "Male",
                             Name = "James Bond"
                         },
                         new
                         {
-                            Id = 2,
+                            CharacterId = 2,
                             Alias = "Iron Man",
                             Gender = "Male",
                             Name = "Tony Stark"
                         },
                         new
                         {
-                            Id = 3,
+                            CharacterId = 3,
                             Alias = "Captain Marvel",
                             Gender = "Female",
                             Name = "Carol Danvers"
                         },
                         new
                         {
-                            Id = 4,
+                            CharacterId = 4,
                             Alias = "Darth Vader",
                             Gender = "Male",
                             Name = "Anakin Skywalker"
@@ -121,7 +121,7 @@ namespace MovieCharactersAPI.Migrations
 
             modelBuilder.Entity("MovieCharactersAPI.Models.Franchise", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("FranchiseId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -132,26 +132,26 @@ namespace MovieCharactersAPI.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("FranchiseId");
 
                     b.ToTable("Franchises");
 
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            FranchiseId = 1,
                             Description = "",
                             Name = "James Bond"
                         },
                         new
                         {
-                            Id = 2,
+                            FranchiseId = 2,
                             Description = "",
                             Name = "Marvel Cinematic Universe"
                         },
                         new
                         {
-                            Id = 3,
+                            FranchiseId = 3,
                             Description = "",
                             Name = "Star Wars"
                         });
@@ -159,7 +159,7 @@ namespace MovieCharactersAPI.Migrations
 
             modelBuilder.Entity("MovieCharactersAPI.Models.Movie", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("MovieId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -185,7 +185,7 @@ namespace MovieCharactersAPI.Migrations
                     b.Property<string>("Trailer")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("MovieId");
 
                     b.HasIndex("FranchiseId");
 
@@ -194,7 +194,7 @@ namespace MovieCharactersAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            MovieId = 1,
                             Director = "Cary Joji Fukunaga",
                             FranchiseId = 1,
                             Genre = "Action",
@@ -204,7 +204,7 @@ namespace MovieCharactersAPI.Migrations
                         },
                         new
                         {
-                            Id = 2,
+                            MovieId = 2,
                             Director = "Russo",
                             FranchiseId = 2,
                             Genre = "Action",
@@ -214,7 +214,7 @@ namespace MovieCharactersAPI.Migrations
                         },
                         new
                         {
-                            Id = 3,
+                            MovieId = 3,
                             Director = "Russo",
                             FranchiseId = 2,
                             Genre = "Action",
@@ -224,7 +224,7 @@ namespace MovieCharactersAPI.Migrations
                         },
                         new
                         {
-                            Id = 4,
+                            MovieId = 4,
                             Director = "Irvin Kershner",
                             FranchiseId = 3,
                             Genre = "Action",

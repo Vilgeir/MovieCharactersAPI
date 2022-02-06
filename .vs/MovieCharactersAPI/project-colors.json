@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "31cf21cd-a060-44da-bc27-d358b8908503": {
+      "ProjectGuid": "31cf21cd-a060-44da-bc27-d358b8908503",
+      "DisplayName": "MovieCharactersAPI",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
