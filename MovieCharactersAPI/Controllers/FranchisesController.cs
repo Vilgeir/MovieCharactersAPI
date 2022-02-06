@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mime;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
@@ -13,6 +14,8 @@ namespace MovieCharactersAPI.Controllers
 {
     [Route("api/v1/[controller]")]
     [ApiController]
+    [ApiConventionType(typeof(DefaultApiConventions))]
+    [Produces(MediaTypeNames.Application.Json)] 
     public class FranchisesController : ControllerBase
     {
         private readonly MediaDbContext _context;
@@ -24,7 +27,10 @@ namespace MovieCharactersAPI.Controllers
             _mapper = mapper;
         }
 
-        // GET: api/Franchises
+        /// <summary>
+        /// Lists all characters and the id of the movies they are inn
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<FranchiseDTO>>> GetFranchises()
         {
@@ -33,7 +39,11 @@ namespace MovieCharactersAPI.Controllers
                .ToListAsync());
         }
 
-        // GET: api/Franchises/5
+        /// <summary>
+        /// Gets specific character
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<FranchiseDTO>> GetFranchise(int id)
         {
@@ -47,8 +57,12 @@ namespace MovieCharactersAPI.Controllers
             return _mapper.Map<FranchiseDTO>(franchise);
         }
 
-        // PUT: api/Franchises/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        /// <summary>
+        /// Updates existing character in the database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="franchise"></param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutFranchise(int id, FranchiseUpdateDTO franchise)
         {
@@ -79,8 +93,11 @@ namespace MovieCharactersAPI.Controllers
             return NoContent();
         }
 
-        // POST: api/Franchises
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        /// <summary>
+        /// Creates a new character in the database
+        /// </summary>
+        /// <param name="franchise"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult<FranchiseCreateDTO>> PostFranchise(FranchiseCreateDTO franchise)
         {
@@ -91,7 +108,11 @@ namespace MovieCharactersAPI.Controllers
             return CreatedAtAction("GetFranchise", new { id = domainFranchise.FranchiseId }, franchise);
         }
 
-        // DELETE: api/Franchises/5
+        /// <summary>
+        /// Deletes a character in the database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteFranchise(int id)
         {

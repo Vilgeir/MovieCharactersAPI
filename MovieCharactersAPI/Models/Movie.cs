@@ -1,10 +1,14 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace MovieCharactersAPI.Models
 {
     public class Movie
     {
-        public int MovieId { get; set; }
+        //PK
+        [Required]
+        public int MovieId { get; set; }       
+        [MaxLength(50)]
         public string Title { get; set; }
         public string Genre { get; set; }
         public string ReleaseYear { get; set; }

@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MovieCharactersAPI</name>
+    </assembly>
+    <members>
+        <member name="M:MovieCharactersAPI.Controllers.CharactersController.GetCharacters">
+            <summary>
+            Lists all characters and the id of the movies they are inn
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MovieCharactersAPI.Controllers.CharactersController.GetCharacter(System.Int32)">
+            <summary>
+            Gets a spesific character
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MovieCharactersAPI.Controllers.CharactersController.PutCharacter(System.Int32,MovieCharactersAPI.Models.DTOs.Character.CharacterUpdateDTO)">
+            <summary>
+            Updates existing character
+            </summary>
+            <param name="id"></param>
+            <param name="character"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MovieCharactersAPI.Controllers.CharactersController.PostCharacter(MovieCharactersAPI.Models.DTOs.Character.CharacterCreateDTO)">
+            <summary>
+            Creates a new instance of a character
+            </summary>
+            <param name="character"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MovieCharactersAPI.Controllers.CharactersController.DeleteCharacter(System.Int32)">
+            <summary>
+            Deletes a character from the database
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MovieCharactersAPI.Controllers.FranchisesController.GetFranchises">
+            <summary>
+            Lists all characters and the id of the movies they are inn
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MovieCharactersAPI.Controllers.FranchisesController.GetFranchise(System.Int32)">
+            <summary>
+            Gets specific character
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MovieCharactersAPI.Controllers.FranchisesController.PutFranchise(System.Int32,MovieCharactersAPI.Models.DTOs.Franchise.FranchiseUpdateDTO)">
+            <summary>
+            Updates existing character in the database
+            </summary>
+            <param name="id"></param>
+            <param name="franchise"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MovieCharactersAPI.Controllers.FranchisesController.PostFranchise(MovieCharactersAPI.Models.DTOs.Franchise.FranchiseCreateDTO)">
+            <summary>
+            Creates a new character in the database
+            </summary>
+            <param name="franchise"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MovieCharactersAPI.Controllers.FranchisesController.DeleteFranchise(System.Int32)">
+            <summary>
+            Deletes a character in the database
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MovieCharactersAPI.Controllers.MoviesController.GetMovies">
+            <summary>
+            Lists all movies in the database with the id of the characters inn it
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MovieCharactersAPI.Controllers.MoviesController.GetMovie(System.Int32)">
+            <summary>
+            Gets a specific character
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MovieCharactersAPI.Controllers.MoviesController.PutMovie(System.Int32,MovieCharactersAPI.Models.DTOs.Movie.MovieUpdateDTO)">
+            <summary>
+            Updates an existing character
+            </summary>
+            <param name="id"></param>
+            <param name="movie"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MovieCharactersAPI.Controllers.MoviesController.PostMovie(MovieCharactersAPI.Models.DTOs.Movie.MovieCreateDTO)">
+            <summary>
+            Creates a new character in the database
+            </summary>
+            <param name="movie"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MovieCharactersAPI.Controllers.MoviesController.DeleteMovie(System.Int32)">
+            <summary>
+            Deletes a charavter in the database
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MovieCharactersAPI.Models.MediaDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Adds seeded data when creating the database
+            </summary>
+            <param name="modelBuilder"></param>
+        </member>
+    </members>
+</doc>

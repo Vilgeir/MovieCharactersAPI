@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mime;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
@@ -13,6 +14,8 @@ namespace MovieCharactersAPI.Controllers
 {
     [Route("api/v1/[controller]")]
     [ApiController]
+    [ApiConventionType(typeof(DefaultApiConventions))]
+    [Produces(MediaTypeNames.Application.Json)]
     public class MoviesController : ControllerBase
     {
         private readonly MediaDbContext _context;
@@ -24,14 +27,21 @@ namespace MovieCharactersAPI.Controllers
             _mapper = mapper;
         }
 
-        // GET: api/Movies
+        /// <summary>
+        /// Lists all movies in the database with the id of the characters inn it
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<MovieDTO>>> GetMovies()
         {
             return _mapper.Map<List<MovieDTO>>(await _context.Movies.Include(x => x.Characters).ToListAsync());
         }
 
-        // GET: api/Movies/5
+        /// <summary>
+        /// Gets a specific character
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<MovieDTO>> GetMovie(int id)
         {
@@ -45,8 +55,12 @@ namespace MovieCharactersAPI.Controllers
             return _mapper.Map<MovieDTO>(movie);
         }
 
-        // PUT: api/Movies/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        /// <summary>
+        /// Updates an existing character
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="movie"></param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutMovie(int id, MovieUpdateDTO movie)
         {
@@ -77,8 +91,11 @@ namespace MovieCharactersAPI.Controllers
             return NoContent();
         }
 
-        // POST: api/Movies
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        /// <summary>
+        /// Creates a new character in the database
+        /// </summary>
+        /// <param name="movie"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult<MovieCreateDTO>> PostMovie(MovieCreateDTO movie)
         {
@@ -89,7 +106,11 @@ namespace MovieCharactersAPI.Controllers
             return CreatedAtAction("GetMovie", new { id = domainMovie.MovieId }, movie);
         }
 
-        // DELETE: api/Movies/5
+        /// <summary>
+        /// Deletes a charavter in the database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteMovie(int id)
         {
